@@ -14,6 +14,11 @@ func main() {
 
 	app := iris.New()
 
+	app.Get("/", func(ctx context.Context) {
+		log.Infof("no ping")
+		ctx.WriteString("ping pong")
+	})
+
 	app.Get("/ping", func(ctx context.Context) {
 		log.Infof("ping")
 		ctx.WriteString("pong pong")
