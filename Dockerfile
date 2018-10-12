@@ -62,4 +62,4 @@ RUN go build .
 #暴露端口
 EXPOSE 8080
 #最终运行docker的命令
-ENTRYPOINT  ["./mygohttp"]
+ENTRYPOINT  ["./docker_ecs_golang_test"]
