@@ -50,9 +50,15 @@
 #CMD /root/gopath/src/server/server.bin
 
 #源镜像
-FROM golang:latest
+FROM luckyqm/golang:8.5.18-builder as builder
 #作者
 MAINTAINER Razil "87055910@qq.com"
+
+RUN go-wrapper download && go-wrapper install
+RUN go build -v
+
+FROM luckyqm/golang:publish
+
 #设置工作目录
 WORKDIR $GOPATH/src/github.com/KunShans/docker_ecs_golang_test
 #将服务器的go工程代码加入到docker容器
