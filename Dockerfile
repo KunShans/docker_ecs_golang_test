@@ -39,7 +39,7 @@ ENV GOPATH /root/gopath
 
 # copy source files
 RUN mkdir -p /root/gopath/src/server
-COPY src/* /root/gopath/src/server/
+COPY docker_ecs_golang_test/* /root/gopath/src/server/
 
 # build the server
 WORKDIR /root/gopath/src/server
