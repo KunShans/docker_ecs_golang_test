@@ -6,7 +6,8 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", home)
+	fmt.Println("Hello ks docker")
+	http.HandleFunc("/ping", home)
 	http.ListenAndServe(":80", nil)
 }
 
