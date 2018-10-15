@@ -25,6 +25,8 @@ func main() {
 	})
 	app.Run(iris.Addr(":8080"), iris.WithCharset("UTF-8"))
 
+	BmobInsertPost()
+
 	fmt.Println("Hello ks docker 2")
 
 }

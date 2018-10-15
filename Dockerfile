@@ -50,22 +50,31 @@
 #CMD /root/gopath/src/server/server.bin
 
 #源镜像
-FROM luckyqm/golang:8.5.18-builder as builder
+FROM golang:latest
 #作者
 MAINTAINER Razil "87055910@qq.com"
+
+WORKDIR /go/src/github.com/KunShans/docker_ecs_golang_test/
+ADD . /go/src/github.com/KunShans/docker_ecs_golang_test/
+
+RUN cd /go/src/github.com/KunShans && git clone git@github.com:/KunShans/docker_ecs_golang_test.git
 
 RUN go-wrapper download && go-wrapper install
 RUN go build -v
 
-FROM luckyqm/golang:publish
+WORKDIR /usr/local/bin/docker_ecs_golang_testd
+COPY --from=builder /go/src/github.com/KunShans/docker_ecs_golang_test/docker_ecs_golang_test .
 
-#设置工作目录
-WORKDIR $GOPATH/src/github.com/KunShans/docker_ecs_golang_test
-#将服务器的go工程代码加入到docker容器
-ADD . $GOPATH/src/github.com/KunShans/docker_ecs_golang_test
-#go构建可执行文件
-RUN go build .
-#暴露端口
 EXPOSE 8080
-#最终运行docker的命令
-ENTRYPOINT  ["./docker_ecs_golang_test"]
+CMD ["./docker_ecs_golang_test"]
+
+##设置工作目录
+#WORKDIR $GOPATH/src/github.com/KunShans/docker_ecs_golang_test
+##将服务器的go工程代码加入到docker容器
+#ADD . $GOPATH/src/github.com/KunShans/docker_ecs_golang_test
+##go构建可执行文件
+#RUN go build .
+##暴露端口
+#EXPOSE 8080
+##最终运行docker的命令
+#ENTRYPOINT  ["./docker_ecs_golang_test"]
