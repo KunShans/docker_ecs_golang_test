@@ -51,7 +51,7 @@
 
 #源镜像
 #FROM golang:latest
-FROM luckyqm/golang:8.5.18-builder as builder
+FROM luckyqm/golang:8.5.18-builder
 
 #作者
 MAINTAINER Razil "87055910@qq.com"
@@ -70,7 +70,7 @@ RUN go build -v
 FROM luckyqm/golang:publish
 
 WORKDIR /usr/local/bin/docker_ecs_golang_testd
-COPY --from=builder  /go/src/github.com/KunShans/docker_ecs_golang_test/docker_ecs_golang_test .
+COPY --from=luckyqm/golang:publish  /go/src/github.com/KunShans/docker_ecs_golang_test/docker_ecs_golang_test .
 
 EXPOSE 8080
 CMD ["./docker_ecs_golang_test"]
