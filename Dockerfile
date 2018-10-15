@@ -50,7 +50,7 @@
 #CMD /root/gopath/src/server/server.bin
 
 #源镜像
-FROM golang:latest
+FROM golang:latest as builder
 #作者
 MAINTAINER Razil "87055910@qq.com"
 
