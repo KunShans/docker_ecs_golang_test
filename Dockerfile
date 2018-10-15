@@ -50,7 +50,7 @@
 #CMD /root/gopath/src/server/server.bin
 
 #源镜像
-FROM golang:latest as builder
+FROM golang:latest
 #作者
 MAINTAINER Razil "87055910@qq.com"
 
@@ -66,7 +66,7 @@ RUN go install -v github.com/kataras/iris github.com/bmob/bmob-go-sdk github.com
 RUN go build -v
 
 WORKDIR /usr/local/bin/docker_ecs_golang_testd
-COPY --from=builder /go/src/github.com/KunShans/docker_ecs_golang_test/docker_ecs_golang_test .
+COPY --from=golang:latest /go/src/github.com/KunShans/docker_ecs_golang_test/docker_ecs_golang_test .
 
 EXPOSE 8080
 CMD ["./docker_ecs_golang_test"]
