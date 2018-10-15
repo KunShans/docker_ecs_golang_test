@@ -57,7 +57,7 @@ MAINTAINER Razil "87055910@qq.com"
 WORKDIR /go/src/github.com/KunShans/docker_ecs_golang_test/
 ADD . /go/src/github.com/KunShans/docker_ecs_golang_test/
 
-RUN cd /go/src/github.com/KunShans && git clone git@github.com:/KunShans/docker_ecs_golang_test.git
+#RUN cd /go/src/github.com/KunShans && git clone git@github.com:/KunShans/docker_ecs_golang_test.git
 
 RUN go-wrapper download && go-wrapper install
 RUN go build -v
