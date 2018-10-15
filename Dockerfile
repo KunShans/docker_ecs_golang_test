@@ -59,7 +59,10 @@ ADD . /go/src/github.com/KunShans/docker_ecs_golang_test/
 
 #RUN cd /go/src/github.com/KunShans && git clone git@github.com:/KunShans/docker_ecs_golang_test.git
 
-RUN go-wrapper download && go-wrapper install
+RUN go get -d -v github.com/kataras/iris
+RUN go install -v github.com/kataras/iris
+
+#RUN go-wrapper download && go-wrapper install
 RUN go build -v
 
 WORKDIR /usr/local/bin/docker_ecs_golang_testd
