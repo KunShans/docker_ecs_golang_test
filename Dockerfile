@@ -66,7 +66,7 @@ RUN go install -v github.com/kataras/iris github.com/bmob/bmob-go-sdk github.com
 RUN go build -v
 
 WORKDIR /usr/local/bin/docker_ecs_golang_testd
-COPY --from=golang:latest /go/src/github.com/KunShans/docker_ecs_golang_test/docker_ecs_golang_test .
+COPY /go/src/github.com/KunShans/docker_ecs_golang_test/docker_ecs_golang_test .
 
 EXPOSE 8080
 CMD ["./docker_ecs_golang_test"]
